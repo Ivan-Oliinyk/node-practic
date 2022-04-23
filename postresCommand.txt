@@ -1,0 +1,46 @@
+//enter to db
+  sudo -u user_name psql db_name
+//change password
+  ALTER USER user_name WITH PASSWORD 'new_password';
+
+//enter to postgres
+          dataBaseName
+  sudo -u postgres psql
+
+//show db
+  \l 
+
+//create db
+                  dataBaseName
+  create database node_server;
+
+
+//connect to db
+           dataBaseName 
+  \connect node_server  
+
+//show table i database
+  \dt
+
+//cretae table (when you create table you must off pgadmin if his work !!!)
+
+  create TABLE review(
+    id SERIAL PRIMARY KEY,
+    nickname VARCHAR(255) NOT NULL,
+    text1 VARCHAR(255) NOT NULL,
+    text2 VARCHAR(255) NOT NULL,
+    text3 VARCHAR(255) NOT NULL,
+    summary VARCHAR(255) NOT NULL
+  );
+
+  create TABLE post (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content VARCHAR(255) NOT NULL,
+    user_id INTEGER,
+    FOREIGN KEY (user_id) REFERENCES review (id)
+  );
+
+//get all row from dt 
+        all     dataBaseName 
+  select * from review;
