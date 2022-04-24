@@ -1,4 +1,4 @@
-//enter to db
+//enter to db-
   sudo -u user_name psql db_name
 //change password
   ALTER USER user_name WITH PASSWORD 'new_password';
