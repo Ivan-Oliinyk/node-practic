@@ -67,21 +67,20 @@ interface PostCreateInput {
 }
 
 enum SortOrder {
-  asc = "asc",
-  desc = "desc",
+  asc,
+  desc,
 }
 
 enum Fields {
-  id = "id",
-  text1 = "text1",
-  text2 = "text2",
-  text3 = "text3",
-  summary = "summary",
-  nickname = "nickname",
-  createdAt = "createdAt",
-  updatedAt = "updatedAt",
+  id,
+  text1,
+  text2,
+  text3,
+  summary,
+  nickname,
+  createdAt,
+  updatedAt,
 }
-
 interface ReviewOrderByFieldInput {
   id?: SortOrder;
   text1?: SortOrder;
@@ -92,3 +91,13 @@ interface ReviewOrderByFieldInput {
   createdAt?: SortOrder;
   updatedAt?: SortOrder;
 }
+// interface ReviewOrderByFieldInput {
+//   id?: SortOrder;
+//   text1?: SortOrder;
+//   text2?: SortOrder;
+//   text3?: SortOrder;
+//   summary?: SortOrder;
+//   nickname?: SortOrder;
+//   createdAt?: SortOrder;
+//   updatedAt?: SortOrder;
+// }
