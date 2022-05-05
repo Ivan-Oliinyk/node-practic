@@ -1,0 +1,41 @@
+- docker version
+
+- docker pull node (default latest)
+
+- docker run <image name or id>
+
+- docker ps -a 
+
+- docker run -it <image name or id>
+    process.version
+    .exit
+
+- docker rm <container id or name>  (remove container)
+
+- docker rmi <image name or id> (remove image)
+
+- docker container prune (remove all container who stoped or dont used)
+
+Crete Docker file 
+Run command in the directory with Dockerfile
+
+- docker build -t <name>:<version> . (create image by config from Docker file)
+
+- docker run -d(detach mode) -p<port in computer>:<port in docker> --name <containerName(yuor)> --rm(delete container when he stoped)  <image name or id>
+
+- docker attach <container name or id> (enter to container)
+
+- docker logs <container name or id> (show container logs)
+
+- docker tag <old name> <new name> (rename image)
+
+- odcker push lorf91/nameImage
+
+If you want to configure env variable you can use  
+- docker run -d -p 3011:3012 -e PORT=3012 -e HELLO=Bye --rm --name good course-shop:good
+
+or you can configure env in Dockerfile (
+  ENV PORT 4200 
+  ENV HELLO "Good morning !!!"
+)
+
