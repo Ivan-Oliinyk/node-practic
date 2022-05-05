@@ -2,8 +2,9 @@ import { Request, Response } from "express";
 import { Router } from "express";
 import fs from "fs";
 import path from "path";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import config from "../config";
+
+const { INTEGRATION_TRANSPORT } = config;
 
 export const printServiceRouter = Router();
 
@@ -12,8 +13,10 @@ printServiceRouter.post("/", async (req: Request, res: Response) => {
     const { review } = req.body;
     const data = JSON.stringify(review);
 
+    const folder = INTEGRATION_TRANSPORT === "sqs" ? "sqsinput" : "restinput";
+
     fs.writeFile(
-      path.join(__dirname, "..", "..", "restinput", `review${Date.now()}.json`),
+      path.join(__dirname, "..", "..", folder, `review${Date.now()}.json`),
       data,
       function (err) {
         if (err) {

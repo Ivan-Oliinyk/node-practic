@@ -1,5 +1,11 @@
 import { Context } from "../context";
 import { DateTimeResolver } from "graphql-scalars";
+import { QueueController } from "../sqs/sqs";
+import config from "../config";
+import { consumer } from "../sqs/consumer";
+import requestPrintService from "../helpers/requestPrintService";
+
+const { QUEUE_NAME, INTEGRATION_TRANSPORT } = config;
 
 export const resolvers = {
   Query: {
@@ -32,14 +38,21 @@ export const resolvers = {
       args: { data: PostCreateInput },
       context: Context
     ) => {
+      //run sqs service
+      if (INTEGRATION_TRANSPORT === "sqs") {
+        QueueController.create(QUEUE_NAME);
+        QueueController.send(QUEUE_NAME, JSON.stringify(args.data));
+        consumer.start();
+      } else {
+        requestPrintService({ review: args.data });
+      }
+
       return context.prisma.review.create({
         data: { ...args.data },
       });
     },
 
     deleteReview: (_parent, args: { id: number }, context: Context) => {
-      console.log("id ===", args.id);
-
       return context.prisma.review.delete({
         where: { id: args.id },
       });
@@ -50,6 +63,15 @@ export const resolvers = {
       args: { id: number; data: PostCreateInput },
       context: Context
     ) => {
+      //run sqs service
+      if (INTEGRATION_TRANSPORT === "sqs") {
+        QueueController.create(QUEUE_NAME);
+        QueueController.send(QUEUE_NAME, JSON.stringify(args.data));
+        consumer.start();
+      } else {
+        requestPrintService({ review: args.data });
+      }
+
       return context.prisma.review.update({
         where: { id: args.id },
         data: { ...args.data },

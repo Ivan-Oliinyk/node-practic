@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { CommentsWrapper, FormReviewStyles } from "./FormReviewStyles";
 import Button from "../button/Button";
@@ -7,8 +7,10 @@ import { FormSummary } from "./FormSummary";
 import FormInputNickname from "./FormInputNickname";
 import PrivatPolicy from "./PrivatPolicy";
 import { ReviewInputData } from "../../types";
-import { GET_REVIEWS } from "../../query/reviews";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import config from "../../config";
+
+const { PRINT_SERVICE } = config;
 
 type Inputs = {
   text1: string;
@@ -37,7 +39,7 @@ const FormReview: React.FC<Data> = ({ data, submit }) => {
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
     reset,
     setValue,
@@ -105,7 +107,6 @@ const FormReview: React.FC<Data> = ({ data, submit }) => {
                 register={register}
                 errors={errors}
                 value={text}
-                setValue={setValue}
               />
             );
           })}
@@ -127,12 +128,11 @@ const FormReview: React.FC<Data> = ({ data, submit }) => {
           errors={errors}
           field="nickname"
           value={nickname}
-          setValue={setValue}
         ></FormInputNickname>
 
         <PrivatPolicy />
 
-        <Button width={"100%"} type="submit">
+        <Button width={"100%"} type="submit" disabled={!isValid}>
           Submit Review
         </Button>
       </form>

@@ -47,7 +47,6 @@ type Props = {
   errors: any;
   field: string;
   value: string;
-  setValue: any;
 };
 
 const FormInputNickname: React.FC<Props> = ({
@@ -55,24 +54,24 @@ const FormInputNickname: React.FC<Props> = ({
   errors,
   field,
   value = "",
-  setValue,
 }) => {
   return (
     <Flex direction={"column"} position={"relative"}>
       <Wrapper>
         <input
           type="text"
-          {...register(field, setValue(field, value), {
+          {...register(field, {
             required: "Enter Nickname !",
             minLength: {
-              value: 5,
-              message: "Lenght must been min 5 characters",
+              value: 2,
+              message: "Lenght must been min 2 characters",
             },
             maxLength: {
               value: 30,
               message: "Lenght must be at most 20 characters",
             },
           })}
+          defaultValue={value}
         />
         <span>Your Nickname (other users will see this)</span>
         <img src="/images/Union.png" alt="union" />

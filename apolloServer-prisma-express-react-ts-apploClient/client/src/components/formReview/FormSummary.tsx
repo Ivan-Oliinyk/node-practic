@@ -90,7 +90,6 @@ export const FormSummary: React.FC<SummaryProps> = ({
   field,
   errors,
   value = "",
-  setValue,
 }) => {
   const starsImagesArr = pushStar(star);
   const foolStars = starsImagesArr.reduce(
@@ -120,17 +119,18 @@ export const FormSummary: React.FC<SummaryProps> = ({
         <InputWrapper>
           <textarea
             placeholder="Meal Summary Review"
-            {...register(field, setValue(field, value), {
+            {...register(field, {
               required: "Enter comment !",
               minLength: {
                 value: 5,
-                message: "Lenght must been min 5 characters",
+                message: "Lenght must been min 3 characters",
               },
               maxLength: {
                 value: 30,
                 message: "Lenght must be at most 20 characters",
               },
             })}
+            defaultValue={value}
           />
           {errors?.[field] && (
             <span>{errors?.[field]?.message || "error!"}</span>

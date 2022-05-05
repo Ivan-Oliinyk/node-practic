@@ -14,7 +14,7 @@ const {
 } = config;
 
 const {
-  colors: { redPrimery, blackPrimery },
+  colors: { redPrimery },
 } = baseTheme;
 
 const Table: React.FC<TableProps> = ({

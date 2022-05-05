@@ -17,7 +17,6 @@ type Props = {
   register: any;
   errors: any;
   value: string;
-  setValue: any;
 };
 
 const ImgWrapper = styled.div`
@@ -61,7 +60,6 @@ const FormComment: React.FC<Props> = ({
   field,
   register,
   errors,
-  setValue,
   value,
 }) => {
   return (
@@ -84,17 +82,18 @@ const FormComment: React.FC<Props> = ({
           <input
             placeholder="Your thoughts about the component"
             type="text"
-            {...register(field, setValue(field, value), {
+            {...register(field, {
               required: "Enter comment !",
               minLength: {
-                value: 5,
-                message: "Lenght must been min 5 characters",
+                value: 2,
+                message: "Lenght must been min 2 characters",
               },
               maxLength: {
                 value: 30,
                 message: "Lenght must be at most 20 characters",
               },
             })}
+            defaultValue={value}
           />
         </InputWrapper>
         {errors?.[field] && (
