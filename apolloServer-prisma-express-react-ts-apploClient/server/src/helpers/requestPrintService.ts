@@ -8,10 +8,6 @@ export default (data) => {
       if (error) {
         console.log(error.message);
       }
-
-      // if (!error && response.statusCode == 200) {
-      //   console.log("body ===", body);
-      // }
     }
   );
 };

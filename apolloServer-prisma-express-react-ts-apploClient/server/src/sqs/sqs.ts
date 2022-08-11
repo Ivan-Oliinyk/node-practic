@@ -29,7 +29,7 @@ const getParamsForSqs = (
   };
 };
 
-const sendParams = (queueName, body, delaySeconds = 1) => {
+const sendParams = (queueName, body, delaySeconds = 25) => {
   return {
     DelaySeconds: Number(delaySeconds),
     MessageAttributes: {
