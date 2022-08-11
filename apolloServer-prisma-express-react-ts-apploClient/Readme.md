@@ -64,12 +64,12 @@ npm install
 
 https://github.com/softwaremill/elasticmq:
 
-You can download the stand-alone distribution here: https://s3/.../elasticmq-server-1.3.3.jar
+You can download the stand-alone distribution here: https://s3/.../elasticmq-server-1.3.9.jar
 
 For run service use:
 
 ```
- java -jar elasticmq-server-1.3.3.jar
+ java -jar elasticmq-server-1.3.9.jar
 ```
 
 Or you can run service with docker, follow to /server/sqs-mock/ and run command
