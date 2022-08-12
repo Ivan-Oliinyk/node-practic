@@ -1,0 +1,12 @@
+[37m[INFO ] - hello info[39m
+[31m[ERROR] - hello error[39m
+[33m[WARN ] -  hello warn[39m
+[34m[DEBUG] - hello debug[39m
+[35m[HTTP ] - hello debug[39m
+[37m[INFO ] - development[39m
+[37m[INFO ] - hello info[39m
+[31m[ERROR] - hello error[39m
+[33m[WARN ] -  hello warn[39m
+[34m[DEBUG] - hello debug[39m
+[35m[HTTP ] - hello debug[39m
+[37m[INFO ] - development[39m
